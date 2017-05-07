@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<style>
+    body{background:blue;}
+    #c1{background:#fff;}
+    #span{color: #fff;}
+</style>
+<script>
+    window.onload=function(){
+
+
+
+        var oC =document.getElementById('c1');
+        var oGC = oC.getContext('2d');
+
+        oGC.beginPath();
+        oGC.arc(100,100,50,0,360*Math.PI/180,false)
+        oGC.closePath();
+        oGC.fill();
+
+        oGC.beginPath();
+        oGC.arc(200,200,50,0,360*Math.PI/180,false)
+        oGC.closePath();
+        oGC.fill();
+
+
+//  以下写法只针对最后一次画出的图像
+
+
+        oC.onmousedown=function (ev) {
+
+            var ev =ev||window.event;
+            var x=ev.clientX-oC.offsetLeft;
+            var y=ev.clientY-oC.offsetTop;
+
+            if(oGC.isPointInPath(x,y)){
+                alert(123);
+
+            }
+
+        }
+
+
+    };
+</script>
+<body>
+<canvas id="c1" width="400" height="400">
+    <span id="span">不支持canvas的浏览器</span>
+
+</canvas>
+
+
+</body>
+</html>
+
+
+
+
